@@ -1,54 +1,49 @@
 @extends('layouts.layout')
-
 @section('content')
-<div class="col-md-12">
-    <div class="card">
-        <div class="header">
-	        <h4 class="title">{{$title}}</h4>
-	        <p class="category"></p>
-	    </div>
-	    <div class="content">
-	    	<form action="{{route('mahasiswa.store')}}" method="POST">
+<div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-book"></i> </span>
+            <h5>Tambah Data Alumni</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form id="form-wizard" class="form-horizontal" action="{{route('mahasiswa.store')}}" method="post">
 	    	{{ csrf_field() }}
-	    	<div class="row">
-		    	<div class="col-md-5">
-	                <div class="form-group @if($errors->has('nim')) has-error @endif"">
-	                    <label>NIM</label>
+	    	
+		    	<div id="form-wizard-1" class="step">
+					<div class="control-group">
+	                      <label class="control-label" class="form-group @if($errors->has('nim')) has-error @endif">Nim</label>
+	                      <div class="controls">
 	                    <input type="text" class="form-control border-input" value="{{old('nim')}}" name="nim">
 	                    <span id="helpBlock2" class="help-block">{{$errors->first('nim')}}</span>
 	                </div>
 	            </div>
-		    	<div class="col-md-5">
-	                <div class="form-group @if($errors->has('angkatan')) has-error @endif"">
-	                    <label>Angkatan</label>
+		    	<div class="control-group">
+	                  <label class="control-label" class="form-group @if($errors->has('angkatan')) has-error @endif">Angkatan</label>
+	                     <div class="controls">
 	                    <input type="text" class="form-control border-input" value="{{old('angkatan')}}" name="angkatan">
 	                    <span id="helpBlock2" class="help-block">{{$errors->first('angkatan')}}</span>
 	                </div>
 	            </div>
-            </div>
-			 <div class="row">
-		    	<div class="col-md-10">
-	                <div class="form-group @if($errors->has('nama_mahasiswa')) has-error @endif"">
-	                    <label>Nama mahasiswa</label>
+            	<div class="control-group">
+	             <label class="control-label" class="form-group @if($errors->has('nama_mahasiswa')) has-error @endif">Nama mahasiswa</label>
+	               <div class="controls">
 	                    <input type="text" class="form-control border-input" value="{{old('nama_mahasiswa')}}" name="nama_mahasiswa">
 	                    <span id="helpBlock2" class="help-block">{{$errors->first('nama_mahasiswa')}}</span>
 	                </div>
 	            </div>
-            </div>
-			 <div class="row">
-		    	<div class="col-md-10">
-	                <div class="form-group @if($errors->has('alamat')) has-error @endif"">
-	                    <label>Alamat</label>
+		    	<div class="control-group">
+	                <label class="control-label"  class="form-group @if($errors->has('alamat')) has-error @endif">Alamat</label>
+	                     <div class="controls">
 	                    <input type="text" class="form-control border-input" value="{{old('alamat')}}" name="alamat">
 	                    <span id="helpBlock2" class="help-block">{{$errors->first('alamat')}}</span>
 	                </div>
+	           
 	            </div>
-            </div>
-            <div class="row">
-		    	<div class="col-md-5">
-	                <div class="form-group @if($errors->has('jurusan')) has-error @endif"">
-	                    <label>Jurusan</label>
-	                    <select class="form-control border-input" name="jurusan">
+ 				<div class="col-md-5">
+	          <label class="control-label" class="form-group @if($errors->has('jurusan')) has-error @endif">Jurusan</label>
+	                     <div class="controls">
+	          <select class="form-control border-input" name="jurusan">
 	                    	@foreach($jurusan as $jur)
 	                    	<option value="{{$jur}}" {{old('jurusan') == $jur ? 'selected' : ''}}>{{$jur}}</option>
 	                    	@endforeach
@@ -56,39 +51,17 @@
 	                    <span id="helpBlock2" class="help-block">{{$errors->first('jurusan')}}</span>
 	                </div>
 	            </div>
-	            <div class="col-md-5">
-	                <div class="form-group @if($errors->has('kelas_program')) has-error @endif"">
-	                    <label>Kelas Program</label>
-	                     <select class="form-control border-input" name="kelas_program">
-	                    	@foreach($kelas as $program)
-	                    	<option value="{{$program}}" {{old('kelas_program') == $program ? 'selected' : ''}}>{{$program}}</option>
-	                    	@endforeach
-	                    </select>
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('kelas_program')}}</span>
-	                </div>
-	            </div>
-            </div>
-            <div class="row">
-		    	<div class="col-md-10">
-	                <div class="form-group @if($errors->has('dosen_id')) has-error @endif"">
-	                    <label>Dosen Wali</label>
-	                    <select class="form-control border-input" name="dosen_id">
-	                    	@foreach($dosen as $kdos=>$vdos)
-	                    	<option value="{{$kdos}}" {{old('dosen_id') == $kdos ? 'selected' : ''}}>{{$vdos}}</option>
-	                    	@endforeach
-	                    </select>
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('dosen_id')}}</span>
-	                </div>
-	            </div>
-            </div>
-            <div class="row">
-            	<div class="col-md-12">
-            		<a href="{{ route('mahasiswa.index') }}" class="btn btn-default">Cancel</a>
-					<input type="submit" class="btn btn-default">
-            	</div>
-            </div>
+			<input id="status" type="hidden" name="status" />
+				<div class="form-actions">
+					<input id="back" class="btn btn-success" type="submit" value="Simpan" />
+					<a href="{{ route('mahasiswa.index') }}" class="btn btn-danger">Batal</a>
+					<div id="status"></div>
+				</div>
+				<div id="submitted"></div>
+            	
 	    	</form>
 	    </div>
     </div>
 </div>
 @endsection
+

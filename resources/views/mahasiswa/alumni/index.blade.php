@@ -1,58 +1,56 @@
 @extends('layouts.layout')
 
 @section('content')
-        <div class="col-md-12">
-            <div class="card">
-                <div class="header">
-                    <h4 class="title">{{$title}}</h4>
-                    <p class="category"></p>
-                </div>
-                <div class="content table-responsive table-full-width">
-                    <table class="table table-striped">
+<div class="row-fluid">
+       <div class="col-md-12">
+      <div class="card">
+        
+        <div class="widget-box">
+          <div class="widget-title"><span class="icon"> <i class="icon-th"></i> </span>
+           <h5>{{$title}}</h5>
+          </div>
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered table-striped">
                         <thead>
-                            <th>NIM</th>
-                            <th>Nama mahasiswa</th>
-                            <th>Jurusan</th>
-                            <th>Aksi</th>
-                        </thead>
+          <tr>
+                            <th >NIM</th>
+                            <th >Nama mahasiswa</th>
+                            <th >Jurusan</th>
+                            <th >Ipk</th>
+                            <th >Lulus</th>
+                            <th >Bulan</th>
+                            <th >Tahun</th>
+                            <th >JK</th>
+                            <th >Email</th>
+                            <th >Tanggal lahir</th>
+                            <th >Skripsi</th>
+                            <th >Aksi</th>
+                           </tr>
+                                </thead>
                         <tbody>
+                            
                             @foreach($mahasiswa as $mhs)
+                            <form>
                             <tr>
                                 <td>{{$mhs->nim}}</td>
                                 <td>{{$mhs->nama_mahasiswa}}</td>
                                 <td>{{$mhs->jurusan}}</td>
-                                <td><a href="{{route('alumni.edit',$mhs->id)}}" class="btn btn-info"><i class="ti-pencil-alt"></i></a></td>
-                            </tr>
+                                <td>{{$mhs->ipk}}</td>
+                                <td>{{$mhs->lulus}}</td>
+                                <td>{{$mhs->bulan}}</td>
+                                <td>{{$mhs->Tahun}}</td>
+                                <td>{{$mhs->jk}}</td>
+                                <td>{{$mhs->email}}</td>
+                                <td>{{$mhs->tanggal_lahir}}</td>
+                                <td>{{$mhs->skripsi}}</td>
+                                <td><a href="{{route('alumni.edit',$mhs->id)}}" class="btn btn-danger">Update</a>
+                                <!-- <a href="" class="btn btn-success">Edit</a></td> -->
+                             </tr>
                             </form>
                             @endforeach
                         </tbody>
                     </table>
-                </div>
-                 <div class="content table-responsive table-full-width">
-                    <table class="table table-striped">
-                        <thead>
-                        @foreach($mahasiswa as $mhs)
-                            <tr><th>IPK</th><td>{{$mhs->ipk}}</td></tr>
-                            <tr><th>Skripsi</th><td>{{$mhs->skripsi}}</td></tr>
-                            <tr><th>Lulus</th> <td>{{$mhs->lulus}}</td></tr>
-                            <tr><th>Bulan</th><td>{{$mhs->bulan}}</td></tr>
-                            <tr><th>Tahun</th><td>{{$mhs->tahun}}</td></tr>
-                            <tr><th>Tempat Lahir</th><td>{{$mhs->tempat_lahir}}</td></tr>
-                            <tr><th>Tanggal lahir</th><td>{{$mhs->tanggal_lahir}}</td></tr>
-                            <tr><th>Jk</th><td>{{$mhs->jk}}</td></tr>
-                            <tr><th>Status</th><td>{{$mhs->status}}</td></tr>
-                            <tr><th>Hp 1</th><td>{{$mhs->hp}}</td></tr>
-                            <tr><th>Hp 2</th><td>{{$mhs->hp1}}</td></tr>   
-                            <tr><th>Hp 3</th> <td>{{$mhs->hp2}}</td></tr>
-                            <tr><th>No Telp Ortu</th><td>{{$mhs->noortu}}</td></tr>
-                            <tr><th>Email</th><td>{{$mhs->email}}</td></tr>
-                            <tr><th>Facebook</th><td>{{$mhs->fb}}</td></tr>
-                        </thead>
-                        @endforeach
-                               </form>
-                            
-                        </tbody>
-                    </table>
+                    {{$mahasiswa->links()}}
                 </div>
             </div>
         </div>

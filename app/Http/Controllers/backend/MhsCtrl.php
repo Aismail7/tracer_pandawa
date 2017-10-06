@@ -22,7 +22,7 @@ class MhsCtrl extends Controller
     {
         //
         $this->data['title'] = 'Data Alumni';
-        $this->data['mahasiswa'] = Mahasiswa::orderBy('nim')->paginate(15);
+        $this->data['mahasiswa'] = Mahasiswa::orderBy('id', 'desc')->paginate(15);
         return view('backend.mahasiswa.index',$this->data);
     }
 
@@ -49,11 +49,13 @@ class MhsCtrl extends Controller
      */
     public function store(reqMhs $request)
     {
+        // return "test";
         //
         $input = $request->all();
-        $input['user_id'] = User::create(['username' => $input['nim'],'password' => bcrypt($input['password']),'role' => 'mahasiswa'])->id;
+        // dd($input);
+        $input['user_id'] = User::create(['username' => $input['nim'],'password' => bcrypt($input['nim']),'role' => 'mahasiswa'])->id;
         Mahasiswa::create($input);
-        return redirect()->route('mahasiswa.index')->with('info','Mahasiswa Berhasil Ditambahkan');
+        return redirect()->route('mahasiswa.index')->with('info','Alumni Berhasil Ditambahkan');
     }
 
     /**
@@ -98,7 +100,7 @@ class MhsCtrl extends Controller
         $mhs = Mahasiswa::find($id);
         $mhs->update($input);
         $input['user_id'] = User::find($mhs->user_id)->update(['username' => $input['nim'],'password' => bcrypt($input['nim']),'role' => 'mahasiswa']);
-        return redirect()->route('mahasiswa.index')->with('info','Data Mahasiswa berhasil diubah');
+        return redirect()->route('mahasiswa.index')->with('info','Data Alumni berhasil diubah');
     }
 
     /**
@@ -111,6 +113,6 @@ class MhsCtrl extends Controller
     {
         //
         Mahasiswa::find($id)->delete();
-        return redirect()->route('mahasiswa.index')->with('info','Data Mahasiswa berhasil dihapus');
+        return redirect()->route('mahasiswa.index')->with('info','Data Alumni berhasil dihapus');
     }
 }

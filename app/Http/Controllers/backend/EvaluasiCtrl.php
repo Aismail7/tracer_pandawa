@@ -23,10 +23,12 @@ class EvaluasiCtrl extends Controller
      */
     public function index()
     {
+
+// return("test");
+
         $this->data['title'] = 'Data Evaluasi';
-        // $ada = Auth::user()->mahasiswa->nim;
-        // dd($ada);
-        $this->data['evaluasi'] = Evaluasi::paginate(15);
+        $this->data['evaluasi'] = Evaluasi::orderBy('id', 'desc')->paginate(15);
+        // dd($this->data);
         return view('backend.evaluasi.index',$this->data);
     }
 
@@ -54,6 +56,7 @@ class EvaluasiCtrl extends Controller
     public function store(reqEvaluasi $request)
     {
 
+// return("test");
         $input = $request->all();
         Evaluasi::create($input);
         return redirect()->route('evaluasi.index')->with('info','Data Evaluasi Berhasil Ditambahkan');
@@ -96,15 +99,14 @@ class EvaluasiCtrl extends Controller
      */
     public function edit($id)
     {
-        $this->data['title'] = 'Edit Data Alumni';
+        $this->data['title'] = 'Edit Data Evaluasi';
         $this->data['mahasiswa'] = Evaluasi::find($id);
-        // $this->data['dosen'] = Dosen::pluck('nama_dosen','id');
          $this->data['jurusan'] =  ['Sistem Informasi','Manajemen Informatika','Komputer Akutansi'];
          $this->data['jenis'] = ['Pria','Wanita'];
          $this->data['lulus'] = ['Lulus','Tidak Lulus'];
          $this->data['bulan'] = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
          $this->data['status'] = ['Nikah','Belum Menikah'];
-        return view('evaluasi.edit',$this->data);    
+        return view('backend.evaluasi.edit',$this->data);    
         }
 
     /**
@@ -119,6 +121,7 @@ class EvaluasiCtrl extends Controller
         
         $input = $request->except('_method','_token','mhs_id');
         $mhs = Evaluasi::find($id);
+        // dd($mhs);
         $mhs->update($input);
       
         return redirect()->route('evaluasi.index')->with('info','Data Evaluasi berhasil diubah');

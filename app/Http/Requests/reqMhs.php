@@ -31,7 +31,7 @@ class reqMhs extends FormRequest
             'angkatan' => 'required|date_format:"Y"',
             'nama_mahasiswa' => 'required',
             'alamat' => 'required',
-            'password' => 'required'       
+            // 'password' => 'required'       
              ];
     }
 
@@ -43,7 +43,7 @@ class reqMhs extends FormRequest
             'angkatan.date_format' => 'Format angkatan harus berupa tahun',
             'nama_mahasiswa.required' => 'Nama mahasiswa harus diisi',
             'alamat.required' => 'Alamat tidak boleh kosong',
-            'password.required' => 'Password tidak boleh kosong'
+            // 'password.required' => 'Password tidak boleh kosong'
 
         ];
     }

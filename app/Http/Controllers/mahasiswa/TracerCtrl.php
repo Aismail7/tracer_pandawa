@@ -96,15 +96,15 @@ class TracerCtrl extends Controller
      */
     public function edit($id)
     {
-        $this->data['title'] = 'Edit Data Alumni';
-        $this->data['mahasiswa'] = Mahasiswa::find($id);
+        $this->data['title'] = 'Edit Data Tracer';
+        $this->data['mahasiswa'] = Tracer::find($id);
         // $this->data['dosen'] = Dosen::pluck('nama_dosen','id');
          $this->data['jurusan'] =  ['Sistem Informasi','Manajemen Informatika','Komputer Akutansi'];
          $this->data['jenis'] = ['Pria','Wanita'];
          $this->data['lulus'] = ['Lulus','Tidak Lulus'];
          $this->data['bulan'] = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
          $this->data['status'] = ['Nikah','Belum Menikah'];
-        return view('mahasiswa.alumni.edit',$this->data);    
+        return view('mahasiswa.tracer.edit',$this->data);    
         }
 
     /**
@@ -118,10 +118,10 @@ class TracerCtrl extends Controller
     {
         //
         $input = $request->except('_method','_token','mhs_id');
-        $mhs = Alumni::find($id);
+        $mhs = Tracer::find($id);
         $mhs->update($input);
         // $input['user_id'] = User::find($mhs->user_id)->update(['username' => $input['nim'],'password' => bcrypt($input['nim']),'role' => 'mahasiswa']);
-        return redirect()->route('alumni.index')->with('info','Data Alumni berhasil diubah');
+        return redirect()->route('tracer.index')->with('info','Data Tracer berhasil diubah');
     }
 
     /**

@@ -1,196 +1,156 @@
 @extends('layouts.layout')
 
 @section('content')
-        <div class="col-md-12">
-            <div class="card">
-                <div class="header">
-                    <h4 class="title">{{$title}}</h4>
-                    <p class="category"></p>
-                </div>
-        <form action="{{route('alumni.update',$mahasiswa->id)}}" method="POST">
+<div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-book"></i> </span>
+            <h5>{{$title}}</h5>
+          </div>
+	    	<form id="form-wizard" class="form-horizontal" action="{{route('tracer.update',$mahasiswa->id)}}" method="POST">
 	    	{{ csrf_field() }}
             <input type="hidden" name="mhs_id" value="$mahasiswa->id">
 	    	<input type="hidden" name="_method" value="PUT">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group @if($errors->has('nim')) has-error @endif">
-	                    <label>NIM</label>
-	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->nim}}" name="nim" disabled>
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('nim')}}</span>
+	    	<div id="form-wizard-1" class="step">
+					<div class="control-group">
+	                      <label class="control-label" class="form-group @if($errors->has('nama_kantor')) has-error @endif">Nama Kantor</label>
+	                      <div class="controls">
+	                   
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->nama_kantor}}" name="nama_kantor" disabled>
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('nama_kantor')}}</span>
 	                </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group @if($errors->has('nama_mahasiswa')) has-error @endif">
-	                    <label>Nama</label>
-	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->nama_mahasiswa}}" name="nama_mahasiswa" disabled>
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('nama_mahasiswa')}}</span>
+				<div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('web_kantor')) has-error @endif">Web Kantor</label>
+					    <div class="controls">
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->web_kantor}}" name="web_kantor" disabled>
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('web_kantor')}}</span>
 	                </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group @if($errors->has('alamat')) has-error @endif">
-	                    <label>Alamat</label>
+
+			<div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('posisi')) has-error @endif">posisi</label>
+					    <div class="controls">
+
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->posisi}}" name="posisi">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('posisi')}}</span>
+	                </div>
+                        </div>
+                        <div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('mulai_kerja')) has-error @endif">mulai_kerja</label>
+					    <div class="controls">
+
+	                    <input type="date" class="form-control border-input" value="{{$mahasiswa->mulai_kerja}}" name="mulai_kerja">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('mulai_kerja')}}</span>
+	                </div>
+                        </div>
+                           <div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('pekerjaan')) has-error @endif">pekerjaan</label>
+					    <div class="controls">
+
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->pekerjaan}}" name="pekerjaan">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('pekerjaan')}}</span>
+	                </div>
+                        </div>
+                        		   <div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('sumber')) has-error @endif">sumber</label>
+					    <div class="controls">
+
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->sumber}}" name="sumber">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('sumber')}}</span>
+	                </div>
+                        </div>
+                           <div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('gaji')) has-error @endif">gaji</label>
+					    <div class="controls">
+
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->gaji}}" name="gaji">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('gaji')}}</span>
+	                </div>
+                        </div>
+                             <div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('lama')) has-error @endif">lama</label>
+					    <div class="controls">
+
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->lama}}" name="lama">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('lama')}}</span>
+	                </div>
+                        </div>
+                             <div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('berkaitan')) has-error @endif">berkaitan</label>
+					    <div class="controls">
+
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->berkaitan}}" name="berkaitan">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('berkaitan')}}</span>
+	                </div>
+                        </div>
+                             <div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('alamat')) has-error @endif">alamat</label>
+					    <div class="controls">
+
 	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->alamat}}" name="alamat">
 	                    <span id="helpBlock2" class="help-block">{{$errors->first('alamat')}}</span>
 	                </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group @if($errors->has('jurusan')) has-error @endif">
-	                    <label>Jurusan</label>
-	                    <select class="form-control border-input" name="jurusan" disabled>
-	                    	@foreach($jurusan as $jur)
-	                    	<option value="{{$jur}}" {{$mahasiswa->jurusan == $jur ? 'selected' : ''}}>{{$jur}}</option>
-	                    	@endforeach
-	                    </select>
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('jurusan')}}</span>
+                             <div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('bidang_usaha')) has-error @endif">bidang_usaha</label>
+					    <div class="controls">
+
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->bidang_usaha}}" name="bidang_usaha">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('bidang_usaha')}}</span>
 	                </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group @if($errors->has('jenis')) has-error @endif">
-	                    <label>Jenis Kelamin</label>
-	                    <select class="form-control border-input" name="jk">
-	                    	@foreach($jenis as $jk)
-	                    	<option value="{{$jk}}" {{$mahasiswa->jk == $jk ? 'selected' : ''}}>{{$jk}}</option>
-	                    	@endforeach
-	                    </select>
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('jk')}}</span>
+                             <div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('jumkar')) has-error @endif">jumkar</label>
+					    <div class="controls">
+
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->jumkar}}" name="jumkar">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('jumkar')}}</span>
 	                </div>
                         </div>
-                             <div class="col-md-3">
-                            <div class="form-group @if($errors->has('lulus')) has-error @endif">
-	                    <label>Lulus</label>
-	                    <select class="form-control border-input" name="lulus">
-	                    	@foreach($lulus as $ls)
-	                    	<option value="{{$ls}}" {{$mahasiswa->lulus == $ls ? 'selected' : ''}}>{{$ls}}</option>
-	                    	@endforeach
-	                    </select>
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('lulus')}}</span>
+                                    <div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('omact')) has-error @endif">omact</label>
+					    <div class="controls">
+
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->omact}}" name="omact">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('omact')}}</span>
 	                </div>
                         </div>
-                         <div class="col-md-3">
-                            <div class="form-group @if($errors->has('bulan')) has-error @endif">
-	                    <label>Bulan</label>
-	                    <select class="form-control border-input" name="bulan">
-	                    	@foreach($bulan as $bl)
-	                    	<option value="{{$bl}}" {{$mahasiswa->bulan == $bl ? 'selected' : ''}}>{{$bl}}</option>
-	                    	@endforeach
-	                    </select>
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('bulan')}}</span>
+                             <div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('pengeluaran')) has-error @endif">pengeluaran</label>
+					    <div class="controls">
+
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->pengeluaran}}" name="pengeluaran">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('pengeluaran')}}</span>
 	                </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group @if($errors->has('tahun')) has-error @endif">
-	                    <label>Tahun</label>
-	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->tahun}}" name="tahun">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('tahun')}}</span>
+                          <div class="control-group">
+				    <label class="control-label" class="form-group @if($errors->has('kegiatan')) has-error @endif">kegiatan</label>
+					    <div class="controls">
+
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->kegiatan}}" name="kegiatan">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('kegiatan')}}</span>
 	                </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group @if($errors->has('tempat_lahir')) has-error @endif">
-	                    <label>Tempat Lahir</label>
-	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->tempat_lahir}}" name="tempat_lahir">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('tempat_lahir')}}</span>
+                          
+
+  					<div class="control-group">
+				   <label class="control-label" class="form-group @if($errors->has('keilmuan')) has-error @endif">keilmuan</label>
+					    <div class="controls">
+
+	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->keilmuan}}" name="keilmuan">
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('keilmuan')}}</span>
 	                </div>
                         </div>
-                        <div class="col-md-3">
-	                <div class="form-group @if($errors->has('tanggal_lahir')) has-error @endif">
-	                    <label>Tanggal Lahir</label>
-	                    <input type="date" class="form-control border-input" value="{{$mahasiswa->tanggal_lahir}}" name="tanggal_lahir">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('tanggal_lahir')}}</span>
-	                </div>
-	            </div>
-                         <div class="col-md-3">
-                            <div class="form-group @if($errors->has('status')) has-error @endif">
-	                    <label>Lulus</label>
-	                    <select class="form-control border-input" name="status">
-	                    	@foreach($status as $stt)
-	                    	<option value="{{$stt}}" {{$mahasiswa->status == $stt ? 'selected' : ''}}>{{$stt}}</option>
-	                    	@endforeach
-	                    </select>
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('status')}}</span>
-	                </div>
-                        </div>
-                    </div>
-             <div class="row">
-                       <div class="col-md-3">
-                            <div class="form-group @if($errors->has('hp')) has-error @endif">
-	                    <label>Hp</label>
-	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->hp}}" name="hp">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('hp')}}</span>
-	                </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group @if($errors->has('hp1')) has-error @endif">
-	                    <label>Hp 1</label>
-	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->hp1}}" name="hp1">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('hp1')}}</span>
-	                </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group @if($errors->has('hp2')) has-error @endif">
-	                    <label>Hp 2</label>
-	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->hp2}}" name="hp2">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('hp2')}}</span>
-	                </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group @if($errors->has('noortu')) has-error @endif">
-	                    <label>No Telp Orang Tua</label>
-	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->noortu}}" name="noortu">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('noortu')}}</span>
-	                </div>
-                        </div>
-                    </div>
-                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group @if($errors->has('email')) has-error @endif">
-	                    <label>Email</label>
-	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->email}}" name="email">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('email')}}</span>
-	                </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group @if($errors->has('fb')) has-error @endif">
-	                    <label>Facebook</label>
-	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->fb}}" name="fb">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('fb')}}</span>
-	                </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group @if($errors->has('ipk')) has-error @endif">
-	                    <label>IPK</label>
-	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->ipk}}" name="ipk">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('ipk')}}</span>
-	                </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group @if($errors->has('skripsi')) has-error @endif">
-	                    <label>Skripsi</label>
-	                    <input type="text" class="form-control border-input" value="{{$mahasiswa->skripsi}}" name="skripsi">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('skripsi')}}</span>
-	                </div>
-                        </div>
-                        </div>
-                        <div class="row">
-            	<div class="col-md-12">
-            		<a href="{{ route('alumni.index') }}" class="btn btn-default">Cancel</a>
-					<input type="submit" class="btn btn-default">
-            	</div>
+	                    
+                       	<input id="back" class="btn btn-success" type="submit" value="Simpan" />
+					<a href="{{ route('tracer.index') }}" class="btn btn-danger">Batal</a>
+					<div id="status"></div>
+				</div>
+				<div id="submitted"></div>
             </div>
-                        </form>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+	    	</form>
+	    </div>
+    </div>
+</div>
 @endsection

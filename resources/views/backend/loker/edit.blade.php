@@ -1,51 +1,47 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="col-md-12">
-    <div class="card">
-        <div class="header">
-	        <h4 class="title">{{$title}}</h4>
-	        <p class="category"></p>
-	    </div>
-	    <div class="content">
-	    	<form action="{{route('loker.update',$loker->id)}}" method="POST">
+<div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-book"></i> </span>
+            <h5>{{$title}}</h5>
+          </div>
+          <form id="form-wizard" class="form-horizontal" action="{{route('loker.update',$loker->id)}}" method="POST">
 	    	{{ csrf_field() }}
 	    	<input type="hidden" name="id" value="$loker->id">
 	    	<input type="hidden" name="_method" value="PUT">
-	    	
-            <div class="row">
-		    	<div class="col-md-10">
-	                <div class="form-group @if($errors->has('perusahaan')) has-error @endif"">
-	                    <label>Nama Perusahaan</label>
+	    	<div id="form-wizard-1" class="step">
+					<div class="control-group">
+	                      <label class="control-label" class="form-group @if($errors->has('perusahaan')) has-error @endif">Perusahaan
+	                      </label>
+	                      <div class="controls">
 	                    <input type="text" class="form-control border-input" value="{{$loker->perusahaan}}" name="perusahaan">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('perusahaan')}}</span>
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('nim')}}</span>
 	                </div>
 	            </div>
-            </div>
-			 <div class="row">
-		    	<div class="col-md-10">
-	                <div class="form-group @if($errors->has('pekerjaan')) has-error @endif"">
-	                    <label>Pekerjaan</label>
+	            <div class="control-group">
+	                      <label class="control-label" class="form-group @if($errors->has('pekerjaan')) has-error @endif">Pekerjaan</label>
+	                      <div class="controls">
 	                    <input type="text" class="form-control border-input" value="{{$loker->pekerjaan}}" name="pekerjaan">
-	                    <span id="helpBlock2" class="help-block">{{$errors->first('pekerjaan')}}</span>
+	                    <span id="helpBlock2" class="help-block">{{$errors->first('nim')}}</span>
 	                </div>
 	            </div>
-            </div>
-			 <div class="row">
-		    	<div class="col-md-10">
-	                <div class="form-group @if($errors->has('isi')) has-error @endif"">
-	                    <label>Isi</label>
+	            <div class="control-group">
+	                      <label class="control-label" class="form-group @if($errors->has('isi')) has-error @endif">Pekerjaan</label>
+	                      <div class="controls">
 	                    <input type="text" class="form-control border-input" value="{{$loker->isi}}" name="isi">
 	                    <span id="helpBlock2" class="help-block">{{$errors->first('isi')}}</span>
 	                </div>
 	            </div>
-            </div>
             
-            <div class="row">
-            	<div class="col-md-12">
-            		<a href="{{ route('mahasiswa.index') }}" class="btn btn-default">Cancel</a>
-					<input type="submit" class="btn btn-default">
-            	</div>
+           <input id="status" type="hidden" name="status" />
+				<div class="form-actions">
+					<input id="back" class="btn btn-success" type="submit" value="Simpan" />
+					<a href="{{ route('loker.index') }}" class="btn btn-danger">Batal</a>
+					<div id="status"></div>
+				</div>
+				<div id="submitted"></div>
             </div>
 	    	</form>
 	    </div>

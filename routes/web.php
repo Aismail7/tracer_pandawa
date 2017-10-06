@@ -44,6 +44,9 @@ Route::group(['namespace' => 'backend','prefix' => 'admin','middleware' => 'admi
     Route::resource('thnajaran','TACtrl');
     Route::resource('loker','LokerCtrl');
     Route::resource('evaluasi','EvaluasiCtrl');
+    // Route::get('backend/evaluasi','backend/EvaluasiCtrl@index');
+    // Route::get('backend/evaluasi','backend/EvaluasiCtrl@create');
+    // Route::get('backend/evaluasi','backend/EvaluasiCtrl@masuk');
 //  Route::get('evaluasi/{id}','EvaluasiCtrl@index');
 });
 //   Route::resource('evaluasi/evaluasi','EvaluasiCtrl');

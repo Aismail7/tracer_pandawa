@@ -17,6 +17,8 @@ class Evaluasi extends Model
      	'id', 'nama_pengguna','telp_penggguna', 'nama_instansi', 'alamat_instansi', 'jabatan', 
         'nama', 'nim', 'posisi', 'telp', 'jurusan', 'devisi', 'masa_kerja', 'integritas', 'keahlian',
         'kemampuan', 'ti', 'komunikasi', 'tim', 'pengembangan', 'saran', 'tanggal_daftar'
+
+        
     ];
 
 }
